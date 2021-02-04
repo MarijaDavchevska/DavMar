@@ -1,0 +1,32 @@
+﻿@model IEnumerable<StringsNThings.Models.CartItem>
+@{
+    ViewBag.Title = "ViewCart";
+}
+<div class=" bg-white" style="width:320px;">
+    <br />
+    <h2 class="">Your Cart</h2>
+    <hr>
+    <br />
+    @foreach (var item in Model)
+    {
+    <div class="bg-white" style="border:5px solid lightblue;border-radius:5px;width:320px; margin:5px;padding:15px;">
+        <h2>@item.Instrument.Name</h2>
+        <img src="
+            @item.Instrument.Image" style="max-width:120px" />
+        <br />
+        <br />
+        <p style="font-size:20px;"> Price:  <b>@item.Instrument.Price $</b></p>
+
+        @Html.ActionLink("Buy Item", "ProcessPayment", "Payment", new { id = item.InstrumentId, userB = item.UserId }, new { @class = "btn btn-info p-2 mr-2 mb-4" })
+        @Html.ActionLink("Discard this item", "DiscardCartItem", "Payment", new { InstrumentId = item.InstrumentId, userB = item.UserId }, new { @class = "btn btn-info p-2 mb-4" })
+    </div>
+        <br />
+    }
+
+    <br />
+    @using Microsoft.AspNet.Identity
+    @Html.ActionLink("Empty your cart", "EmptyCart", "Payment", new { userB = User.Identity.GetUserId() }, new { @class = "btn btn-info p-2 ml-4 mr-2 mb-4" })
+    @Html.ActionLink("Checkout", "Checkout", "Payment", new { userB = User.Identity.GetUserId() }, new { @class = "btn btn-info p-2 mr-2 mb-4" })
+
+
+</div>

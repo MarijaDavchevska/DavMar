@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="bootstrap.css" rel="stylesheet" />
+
+    
+
+</head>
+
+
+
+
+
+<body style="background-image:url('../../Images/proba.jpg');background-repeat:repeat ;background-size:500px">
+    <style>
+        #uniqueid:hover {
+            background-color: lightseagreen;
+            border: 0px solid lightseagreen;
+            border-radius: 5px;
+            padding: 15px;
+            
+        }
+        #uniqueid {
+            font-size: 20px;
+        }
+        body {
+        font-family: Helvetica, sans-serif;
+        }
+    </style>
+
+
+    <nav class="navbar navbar-expand-sm bg-info justify-content-center p-0">
+        <a class="navbar-brand mr-4" href="#">
+            <img src="../../Images/saxx.png" alt="" style="width:80px;">
+            <span style="text-decoration:none;color:white;font-size:30px;"> Strings'n'Things</span>
+        </a>
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+
+            <li id="uniqueid" class="nav-item mr-4 ">@Html.ActionLink("All Instruments", "Index", "Instruments",null, new { @style = "text-decoration:none", @class = "text-white " })</li>
+            <li id="uniqueid" class="nav-item mr-4">&nbsp;@Html.ActionLink("String", "GetInstrumentsByType", "Instruments", new { type = "String" }, new { @style = "text-decoration:none", @class = "text-white " })</li>
+            <li id="uniqueid" class="nav-item mr-4">&nbsp;@Html.ActionLink("Brass", "GetInstrumentsByType", "Instruments", new { type = "Brass" }, new { @style = "text-decoration:none", @class = "text-white " }) </li>
+            <li id="uniqueid" class="nav-item mr-4">&nbsp;@Html.ActionLink("Keyboard", "GetInstrumentsByType", "Instruments", new { type = "Keyboard" }, new { @style = "text-decoration:none", @class = "text-white " })</li>
+            <li id="uniqueid" class="nav-item mr-4">&nbsp;@Html.ActionLink("Percussion", "GetInstrumentsByType", "Instruments", new { type = "Percussion" }, new { @style = "text-decoration:none", @class = "text-white " })</li>
+
+        </ul>
+
+
+        @Html.Partial("_LoginPartial")
+    </nav>
+
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="col-md-2">
+                <div class="navbar-header">
+                    <button type="button" class="btn btn-primary navbar-toggle " data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        Menu
+                    </button>
+                    @* @Html.ActionLink("Strings'n'Things", "Index", "Instruments", new { area = "" }, new { @class = "navbar-brand" })
+    *@
+    @*   </div>
+
+                    <div class="navbar-collapse collapse">
+                        <li style="list-style-type:none">@Html.ActionLink("All Instruments", "Index", "Instruments")</li>
+                        <ul class="nav navbar-nav">
+
+                            <li>@Html.ActionLink("String", "GetInstrumentsByType", "Instruments", new { type = "String" }, new { @style = "text-decoration:none" })</li>
+                            <li>@Html.ActionLink("Brass", "GetInstrumentsByType", "Instruments", new { type = "Brass" }, new { @style = "text-decoration:none" })</li>
+                            <li>@Html.ActionLink("Keyboard", "GetInstrumentsByType", "Instruments", new { type = "Keyboard" }, new { @style = "text-decoration:none" })</li>
+                            <li>@Html.ActionLink("Percussion", "GetInstrumentsByType", "Instruments", new { type = "Percussion" }, new { @style = "text-decoration:none" })</li>
+
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div><!--c-->
+            @Html.Partial("_LoginPartial")
+        </div>*@
+    <div>
+        <div class="container body-content">
+            @RenderBody()
+
+            <footer style="text-align:center; color:cornflowerblue; font-size:20px">
+                <p class="bg-white">&copy; @DateTime.Now.Year - Strings'n'Things</p>
+                <p class="bg-white">
+                    <i class=" fa fa-facebook">   </i>
+                    <i class="fa fa-twitter">   </i>
+                    <i class="fa fa-google-plus">   </i>
+                    <i class="fa fa-pinterest">   </i>
+                    <i class="fa fa-youtube">   </i>
+                </p>
+
+            </footer>
+
+
+            <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

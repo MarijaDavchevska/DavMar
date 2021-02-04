@@ -1,0 +1,73 @@
+﻿@model StringsNThings.Models.Instrument
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="bg-light">
+<h2 class="display-3 text-success">Details</h2>
+<div class="row">
+<div class="col-4">
+    <div class="card">
+        <div class="card-body bg-white">
+            <h4 class="text-secondary">
+                @Html.DisplayFor(model => model.Name)
+            </h4>
+            <hr />
+            <dl class="dl-horizontal">
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Category)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Category)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+
+            </dl>
+
+            <p>
+                @using Microsoft.AspNet.Identity
+                <button class="btn btn-success" onclick="ItemAdded()">
+                    @Html.ActionLink("Add to Cart", "AddToCart", "Payment", new { id = Model.Id, userB = User.Identity.GetUserId() }, new { @style = "color:white" })
+                </button>  |
+                <button class="btn btn-success">
+                    @Html.ActionLink("Back to List", "Index", null, new { @style = "color:white" })
+                </button>
+
+            </p>
+        </div>
+    </div>
+</div>
+<div class="col-3">
+    <div class="card">
+        <div class="card-body bg-light">
+            <img src="@Model.Image" style="height:300px; width:210px" />
+        </div>
+    </div>
+</div>
+    <div class="col-5">
+
+    </div>
+</div>
+    </div>
+<script>
+    function ItemAdded() {
+        alert("The item has been added to the cart");
+    }
+</script>
